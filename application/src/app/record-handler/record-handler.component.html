@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <h1>The Dearest of All Forms</h1>
+
+    <form #carForm="ngForm" (ngSubmit)="onSubmit(carForm)" novalidate>
+      
+        <div class="form-group">
+            <label>Plate number</label>
+            <input type="plate" required #plateNumber="ngModel" pattern="[A-Z]{3}-[0-9]{3}"
+            [class.is-invalid]="plateNumber.invalid && plateNumber.touched" 
+            class="form-control" name="plateNumber" ngModel>
+            <div *ngIf="plateNumber.errors && (plateNumber.invalid || plateNumber.touched)">
+                <small class="text-danger" *ngIf="plateNumber.errors.required"> Plate number is required</small>
+                <small class="text-danger" *ngIf="plateNumber.errors.pattern"> Plate number format: ABC-123</small>
+            </div>
+                
+        </div>
+      
+        <div class="form-group">
+            <label>Owner's name</label>
+            <input type="text" required #ownersName="ngModel" [class.is-invalid]="ownersName.invalid && ownersName.touched" 
+            class="form-control" name="ownerName" ngModel>
+            <ng-template [ngIf]="ownersName.invalid" [ngIfElse]="none">
+              <small class="text-danger">Name is required</small>
+            </ng-template>
+        </div>
+      
+        <div class="form-group">
+            <label>Owner's email</label>
+            <input type="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+           [class.is-invalid]="email.invalid && email.touched" class="form-control" name="email" ngModel>
+        </div>
+      
+        <button [disabled]="carForm.form.invalid" class="btn btn-primary" type="submit">Save record</button>
+    </form>
+        
+    <br><br><br>
+      
+</div>
+     
+      
+<h1>The List</h1>
+<div class="listHeader">
+     
+</div>
+<ul *ngIf="cars">
+    <li *ngFor="let car of cars">
+        <strong>Plate Number:</strong>
+        <p class="Plate number">{{ car.plateNumber}}</p>
+        <strong>Owner:</strong>
+        <p class="Owner">{{ car.ownerName}}</p>
+        <strong>|email:</strong>
+        <p class="email">{{ car.email}}</p>
+        <button (click)="deleteRecord(car.serialId)">Delete</button>
+    </li>
+</ul>
