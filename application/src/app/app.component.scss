@@ -1,0 +1,12 @@
+.title {
+    display: flex;
+    background-color: lightgray;
+}
+
+li a {
+    background-color:rgb(221, 179, 160);
+    display: flex;
+    &:hover {
+        background: darken(plum, 10%);
+    }
+}

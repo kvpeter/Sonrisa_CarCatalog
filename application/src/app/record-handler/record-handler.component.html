@@ -45,10 +45,10 @@
 <ul *ngIf="cars">
     <li *ngFor="let car of cars">
         <strong>Plate Number:</strong>
-        <p class="Plate number">{{ car.plateNumber}}</p>
+        <p class="Plate-number">{{ car.plateNumber}}</p>
         <strong>Owner:</strong>
         <p class="Owner">{{ car.ownerName}}</p>
-        <strong>|email:</strong>
+        <strong>email:</strong>
         <p class="email">{{ car.email}}</p>
         <button (click)="deleteRecord(car.serialId)">Delete</button>
     </li>
