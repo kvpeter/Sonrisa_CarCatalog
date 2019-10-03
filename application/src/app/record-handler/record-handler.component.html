@@ -19,7 +19,7 @@
             <label>Owner's name</label>
             <input type="text" required #ownersName="ngModel" [class.is-invalid]="ownersName.invalid && ownersName.touched" 
             class="form-control" name="ownerName" ngModel>
-            <ng-template [ngIf]="ownersName.invalid" [ngIfElse]="none">
+            <ng-template [ngIf]="ownersName.invalid">
               <small class="text-danger">Name is required</small>
             </ng-template>
         </div>
